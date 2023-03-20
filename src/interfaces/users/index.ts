@@ -10,4 +10,5 @@ export interface IUser {
   phone: string;
   createdAt: Date;
   updatedAt: Date;
+  deletedAt: Date;
 }
