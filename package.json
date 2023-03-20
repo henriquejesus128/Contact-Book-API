@@ -1,0 +1,11 @@
+{
+  "name": "Contact-Book-API",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:henriquejesus128/Contact-Book-API.git",
+  "author": "Henrique Jesus <henrique.jesus128@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
