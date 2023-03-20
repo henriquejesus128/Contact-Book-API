@@ -9,4 +9,5 @@ export interface IUser {
   email: string;
   phone: string;
   createdAt: Date;
+  updatedAt: Date;
 }
