@@ -26,4 +26,4 @@ export const userReturned: SchemaOf<IUser> = yup.object().shape({
   updatedAt: yup.date().required(),
 });
 
-export const listUsers = yup.array();
+export const listUsers = yup.array(userReturned);
