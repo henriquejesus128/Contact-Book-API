@@ -6,7 +6,10 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   OneToMany,
+  BeforeInsert,
+  BeforeUpdate,
 } from "typeorm";
+import { hashSync } from "bcryptjs";
 import { Contact } from "./contact.entity";
 
 @Entity("users")
@@ -34,6 +37,12 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  encryptPassword() {
+    this.password = hashSync(this.password, 10);
+  }
 
   @OneToMany(() => Contact, (contact) => contact.user)
   contacts: Contact[];
