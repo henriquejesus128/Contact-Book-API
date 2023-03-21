@@ -24,7 +24,6 @@ export const userReturned: SchemaOf<IUser> = yup.object().shape({
   isActive: yup.boolean().required(),
   createdAt: yup.date().required(),
   updatedAt: yup.date().required(),
-  deletedAt: yup.date().required(),
 });
 
 export const listUsers = yup.array();

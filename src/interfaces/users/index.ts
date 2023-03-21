@@ -12,7 +12,6 @@ export interface IUser {
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
-  deletedAt: Date;
 }
 
 export interface IUserUpdate {
