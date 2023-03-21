@@ -23,10 +23,10 @@ const updateUserService = async (
 
   await userRepository.save(updateUser);
 
-  const newUser = await userReturned.validate(updateUser, {
+  const validUser = await userReturned.validate(updateUser, {
     stripUnknown: true,
   });
 
-  return newUser;
+  return validUser;
 };
 export default updateUserService;

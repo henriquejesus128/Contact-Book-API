@@ -12,15 +12,15 @@ const createUserService = async (body: IUserReq): Promise<IUser> => {
   const foundUser = await userRepository.findOneBy({ email: email });
 
   if (foundUser) {
-    throw new AppError(`User does not exist!`, 409);
+    throw new AppError(`User exists!`, 409);
   }
 
   const user = userRepository.create(body);
 
   await userRepository.save(user);
 
-  const newUser = await userReturned.validate(user, { stripUnknown: true });
+  const validUser = await userReturned.validate(user, { stripUnknown: true });
 
-  return newUser;
+  return validUser;
 };
 export default createUserService;

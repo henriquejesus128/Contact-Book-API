@@ -12,10 +12,10 @@ const retriveUserService = async (id: string) => {
     throw new AppError(`User does not exist!`, 409);
   }
 
-  const foundUser = await userReturned.validate(findUser, {
+  const validUser = await userReturned.validate(findUser, {
     stripUnknown: true,
   });
 
-  return foundUser;
+  return validUser;
 };
 export default retriveUserService;

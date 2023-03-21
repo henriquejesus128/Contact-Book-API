@@ -8,10 +8,10 @@ const listUsersService = async (): Promise<IUser[]> => {
 
   const users = await userRepository.find();
 
-  const newListUsers = await listUsers.validate(users, {
+  const validListUsers = await listUsers.validate(users, {
     stripUnknown: true,
   });
 
-  return newListUsers;
+  return validListUsers;
 };
 export default listUsersService;
