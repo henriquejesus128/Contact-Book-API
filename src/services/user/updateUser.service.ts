@@ -26,6 +26,7 @@ const updateUserService = async (
   const newUser = await userReturned.validate(updateUser, {
     stripUnknown: true,
   });
+
   return newUser;
 };
 export default updateUserService;
