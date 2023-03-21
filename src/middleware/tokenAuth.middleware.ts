@@ -21,7 +21,6 @@ const tokenAuthMiddleware = async (
     req.user = {
       id: decoded.sub,
       email: decoded.email,
-      isAdm: decoded.isAdm,
     };
     return next();
   });
