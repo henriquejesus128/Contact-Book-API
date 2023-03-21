@@ -12,8 +12,8 @@ export const userSchema: ObjectSchema<IUserReq> = yup.object().shape({
 export const userUpdate: ObjectSchema<IUserUpdate> = yup.object().shape({
   name: yup.string().notRequired(),
   email: yup.string().email().notRequired(),
-  password: yup.string().min(6).required(),
-  phone: yup.string().min(20).required(),
+  password: yup.string().min(6).notRequired(),
+  phone: yup.string().min(20).notRequired(),
 });
 
 export const userReturned: ObjectSchema<IUser> = yup.object().shape({
