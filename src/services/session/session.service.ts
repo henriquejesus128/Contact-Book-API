@@ -17,7 +17,7 @@ const sessionService = async ({
   const { isActive } = user;
 
   if (!isActive) {
-    throw new AppError(`inactive user!`, 400);
+    throw new AppError(`Disabled user!`, 400);
   }
 
   if (!user) {
