@@ -19,6 +19,7 @@ const deleteUserService = async (id: string) => {
 
   findUser.isActive = false;
   await userRepository.save(findUser);
+  await userRepository.softRemove(findUser);
 
   return {};
 };
