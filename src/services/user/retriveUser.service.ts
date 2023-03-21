@@ -8,7 +8,7 @@ const retriveUserService = async (id: string) => {
 
   const findUser = await userRepository.findOneBy({ id: id });
 
-  if (findUser) {
+  if (!findUser) {
     throw new AppError(`User does not exist!`, 409);
   }
 
