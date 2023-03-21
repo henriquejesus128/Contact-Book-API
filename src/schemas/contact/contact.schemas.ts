@@ -26,3 +26,5 @@ export const contactReturned: SchemaOf<IContact> = yup.object().shape({
   createdAt: yup.date().notRequired(),
   updatedAt: yup.date().notRequired(),
 });
+
+export const listContacts = yup.array();
