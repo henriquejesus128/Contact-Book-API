@@ -1,4 +1,9 @@
 import { Request, Response } from "express";
+import createContactService from "../../services/contact/createContact.service";
+import deleteContactService from "../../services/contact/deleteContact.service";
+import listContactsService from "../../services/contact/listContacts.service";
+import retriveContactService from "../../services/contact/retriveContact.service";
+import updateContactService from "../../services/contact/updateContact.service";
 
 export const createContactController = async (req: Request, res: Response) => {
   const newContact = await createContactService(req.body);
