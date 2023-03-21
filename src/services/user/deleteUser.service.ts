@@ -5,16 +5,20 @@ import { AppError } from "../../errors/AppError";
 const deleteUserService = async (id: string) => {
   const userRepository = AppDataSource.getRepository(User);
 
-  const user = await userRepository.findOneBy({ id });
+  const findUser = await userRepository.findOneBy({ id });
 
-  const { isActive } = user;
+  if (findUser) {
+    throw new AppError(`User does not exist!`, 409);
+  }
+
+  const { isActive } = findUser;
 
   if (!isActive) {
     throw new AppError("Disabled user!", 400);
   }
 
-  user.isActive = false;
-  await userRepository.save(user);
+  findUser.isActive = false;
+  await userRepository.save(findUser);
 
   return {};
 };
