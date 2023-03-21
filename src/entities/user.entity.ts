@@ -35,9 +35,6 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date;
-
   @OneToMany(() => Contact, (contact) => contact.user)
   contacts: Contact[];
 }
