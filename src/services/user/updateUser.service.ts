@@ -12,7 +12,7 @@ const updateUserService = async (
 
   const findUser = await userRepository.findOneBy({ id: id });
 
-  if (findUser) {
+  if (!findUser) {
     throw new AppError(`User does not exist!`, 409);
   }
 
