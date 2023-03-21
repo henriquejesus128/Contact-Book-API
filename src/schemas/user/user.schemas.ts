@@ -17,14 +17,14 @@ export const userUpdate: ObjectSchema<IUserUpdate> = yup.object().shape({
 });
 
 export const userReturned: ObjectSchema<IUser> = yup.object().shape({
-  id: yup.string().notRequired(),
-  name: yup.string().notRequired(),
-  email: yup.string().email().notRequired(),
-  phone: yup.string().notRequired(),
-  isActive: yup.boolean().notRequired(),
-  createdAt: yup.date().notRequired(),
-  updatedAt: yup.date().notRequired(),
-  deletedAt: yup.date().notRequired(),
+  id: yup.string().required(),
+  name: yup.string().required(),
+  email: yup.string().email().required(),
+  phone: yup.string().required(),
+  isActive: yup.boolean().required(),
+  createdAt: yup.date().required(),
+  updatedAt: yup.date().required(),
+  deletedAt: yup.date().required(),
 });
 
 export const listUsers = yup.array();

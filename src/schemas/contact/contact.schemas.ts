@@ -19,12 +19,12 @@ export const contactUpdate: ObjectSchema<IContactUpdate> = yup.object().shape({
 });
 
 export const contactReturned: ObjectSchema<IContact> = yup.object().shape({
-  id: yup.string().notRequired(),
-  name: yup.string().notRequired(),
-  email: yup.string().email().notRequired(),
-  phone: yup.string().notRequired(),
-  createdAt: yup.date().notRequired(),
-  updatedAt: yup.date().notRequired(),
+  id: yup.string().required(),
+  name: yup.string().required(),
+  email: yup.string().email().required(),
+  phone: yup.string().required(),
+  createdAt: yup.date().required(),
+  updatedAt: yup.date().required(),
 });
 
 export const listContacts = yup.array();
