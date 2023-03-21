@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { ObjectSchema, SchemaOf } from "yup";
+import { SchemaOf } from "yup";
 import { IUser, IUserReq, IUserUpdate } from "../../interfaces/users";
 
 export const userSchema: SchemaOf<IUserReq> = yup.object().shape({
