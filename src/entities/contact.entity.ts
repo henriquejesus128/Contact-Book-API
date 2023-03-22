@@ -30,7 +30,7 @@ export class Contact {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => User, (user) => user.contacts, { eager: true })
+  @ManyToOne(() => User, (user) => user.contacts)
   @JoinColumn()
   user: User;
 }
