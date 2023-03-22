@@ -12,10 +12,6 @@ const updateUserService = async (
 
   const findUser = await userRepository.findOneBy({ id: id });
 
-  if (!findUser) {
-    throw new AppError(`User does not exist!`, 409);
-  }
-
   const updateUser = userRepository.create({
     ...findUser,
     ...body,
