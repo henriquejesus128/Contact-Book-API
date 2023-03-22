@@ -22,14 +22,14 @@ userRoutes.get(
   retriveUserController
 );
 userRoutes.patch(
-  "/:id",
+  "",
   dataValidMiddleware(userUpdate),
   tokenAuthMiddleware,
   userExistsMiddleware,
   updateUserController
 );
 userRoutes.delete(
-  "/:id",
+  "",
   tokenAuthMiddleware,
   userExistsMiddleware,
   deleteUserController
