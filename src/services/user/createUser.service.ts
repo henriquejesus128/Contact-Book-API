@@ -9,9 +9,9 @@ const createUserService = async (body: IUserReq): Promise<IUser> => {
 
   const { email } = body;
 
-  const foundUser = await userRepository.findOneBy({ email: email });
+  const findUser = await userRepository.findOneBy({ email: email });
 
-  if (foundUser) {
+  if (findUser) {
     throw new AppError(`User exists!`, 409);
   }
 
