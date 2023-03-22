@@ -9,13 +9,13 @@ import {
 export const contactSchema: SchemaOf<IContactReq> = yup.object().shape({
   name: yup.string().required(),
   email: yup.string().email().required(),
-  phone: yup.string().min(20).required(),
+  phone: yup.string().max(20).required(),
 });
 
 export const contactUpdate: SchemaOf<IContactUpdate> = yup.object().shape({
   name: yup.string().notRequired(),
   email: yup.string().email().notRequired(),
-  phone: yup.string().min(20).notRequired(),
+  phone: yup.string().max(20).notRequired(),
 });
 
 export const contactReturned: SchemaOf<IContact> = yup.object().shape({
