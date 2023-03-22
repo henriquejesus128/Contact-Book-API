@@ -11,7 +11,7 @@ export const createContactController = async (req: Request, res: Response) => {
 };
 
 export const listContactsController = async (req: Request, res: Response) => {
-  const array = await listContactsService();
+  const array = await listContactsService(req.user);
   return res.status(200).json(array);
 };
 
