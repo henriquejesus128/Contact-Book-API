@@ -7,10 +7,6 @@ const deleteUserService = async (id: string) => {
 
   const findUser = await userRepository.findOneBy({ id });
 
-  if (!findUser) {
-    throw new AppError(`User does not exist!`, 409);
-  }
-
   const { isActive } = findUser;
 
   if (!isActive) {
