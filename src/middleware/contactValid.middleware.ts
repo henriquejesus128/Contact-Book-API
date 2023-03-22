@@ -3,7 +3,7 @@ import AppDataSource from "../data-source";
 import { Contact } from "../entities/contact.entity";
 import { User } from "../entities/user.entity";
 
-const existContactUserMiddleware = async (
+const contactValidMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -34,4 +34,4 @@ const existContactUserMiddleware = async (
   return next();
 };
 
-export default existContactUserMiddleware;
+export default contactValidMiddleware;
