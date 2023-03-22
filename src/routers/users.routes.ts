@@ -28,6 +28,11 @@ userRoutes.patch(
   userExistsMiddleware,
   updateUserController
 );
-userRoutes.delete("/:id", tokenAuthMiddleware, deleteUserController);
+userRoutes.delete(
+  "/:id",
+  tokenAuthMiddleware,
+  userExistsMiddleware,
+  deleteUserController
+);
 
 export default userRoutes;
