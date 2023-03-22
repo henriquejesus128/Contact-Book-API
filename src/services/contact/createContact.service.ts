@@ -12,14 +12,8 @@ const createContactService = async (
 ): Promise<IContact> => {
   const contactRepository = AppDataSource.getRepository(Contact);
   const userRepository = AppDataSource.getRepository(User);
-  const { email } = body;
+
   const { id } = user;
-
-  const foundContact = await contactRepository.findOneBy({ email });
-
-  if (foundContact) {
-    throw new AppError(`Contact exists!`, 409);
-  }
 
   const foundUser = await userRepository.findOneBy({ id });
 
