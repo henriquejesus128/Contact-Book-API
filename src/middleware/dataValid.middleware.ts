@@ -12,7 +12,7 @@ const dataValidMiddleware =
       req.body = validated;
       return next();
     } catch (err) {
-      return res.status(400).json({ message: err.message });
+      return res.status(400).json({ message: err.errors });
     }
   };
 export default dataValidMiddleware;
