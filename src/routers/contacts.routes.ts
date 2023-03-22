@@ -6,11 +6,18 @@ import {
   retriveContactController,
   updateContactController,
 } from "../controllers/contact/contacts.controller";
+import dataValidMiddleware from "../middleware/dataValid.middleware";
 import tokenAuthMiddleware from "../middleware/tokenAuth.middleware";
+import { contactSchema } from "../schemas/contact/contact.schemas";
 
 const contactRoutes: Router = Router();
 
-contactRoutes.post("", tokenAuthMiddleware, createContactController);
+contactRoutes.post(
+  "",
+  tokenAuthMiddleware,
+  dataValidMiddleware(contactSchema),
+  createContactController
+);
 contactRoutes.get("", tokenAuthMiddleware, listContactsController);
 contactRoutes.get("/:id", tokenAuthMiddleware, retriveContactController);
 contactRoutes.patch("/:id", tokenAuthMiddleware, updateContactController);
