@@ -8,7 +8,7 @@ const retriveContactService = async (id: string) => {
 
   const findContact = await contactRepository.findOneBy({ id: id });
 
-  if (findContact) {
+  if (!findContact) {
     throw new AppError(`Contact does not exist!`, 409);
   }
 

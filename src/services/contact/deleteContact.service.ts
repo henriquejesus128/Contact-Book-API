@@ -7,7 +7,7 @@ const deleteContactService = async (id: string) => {
 
   const findContact = await contactRepository.findOneBy({ id });
 
-  if (findContact) {
+  if (!findContact) {
     throw new AppError(`User does not exist!`, 409);
   }
 
