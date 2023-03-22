@@ -3,7 +3,7 @@ import AppDataSource from "../data-source";
 import { User } from "../entities/user.entity";
 import { AppError } from "../errors/AppError";
 
-const uuidExistsMiddleware = async (
+const userExistsMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -12,10 +12,10 @@ const uuidExistsMiddleware = async (
   const findUser = await userRepository.findOneBy({ id: req.params.id });
 
   if (!findUser) {
-    return res.status(409).json({ message: "UIID does not exist!" });
+    return res.status(409).json({ message: "User does not exist!" });
   }
 
   return next();
 };
 
-export default uuidExistsMiddleware;
+export default userExistsMiddleware;
