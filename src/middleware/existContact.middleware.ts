@@ -11,7 +11,7 @@ const existContactMiddleware = async (
   const findContact = await contactRepository.findOneBy({ id: req.params.id });
 
   if (!findContact) {
-    return res.status(409).json({ message: "Contact exists!" });
+    return res.status(409).json({ message: "Contact does not exist!" });
   }
 
   return next();
