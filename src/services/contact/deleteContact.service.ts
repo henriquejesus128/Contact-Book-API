@@ -11,7 +11,7 @@ const deleteContactService = async (id: string) => {
     throw new AppError(`User does not exist!`, 409);
   }
 
-  await contactRepository.delete(findContact);
+  await contactRepository.remove(findContact);
 
   return {};
 };
