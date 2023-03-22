@@ -1,18 +1,17 @@
 import AppDataSource from "../../data-source";
-import { Contact } from "../../entities/contact.entity";
+import { User } from "../../entities/user.entity";
 import { IContact } from "../../interfaces/contacts";
-import { ITokenUser } from "../../interfaces/users";
 import { listContacts } from "../../schemas/contact/contact.schemas";
 
-const listContactsService = async (user: ITokenUser): Promise<IContact[]> => {
-  const contactRepository = AppDataSource.getRepository(Contact);
+const listContactsService = async (id: string) => {
+  const userRepository = AppDataSource.getRepository(User);
 
-  const contacts = await contactRepository.findOne({
-    where: { id: user.id },
-    relations: { user: true },
+  const user = await userRepository.findOne({
+    where: { id: id },
+    relations: { contacts: true },
   });
 
-  const validListContact = await listContacts.validate(contacts, {
+  const validListContact = await listContacts.validate(user.contacts, {
     stripUnknown: true,
   });
 
