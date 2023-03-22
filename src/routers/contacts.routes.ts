@@ -7,6 +7,7 @@ import {
   updateContactController,
 } from "../controllers/contact/contacts.controller";
 import dataValidMiddleware from "../middleware/dataValid.middleware";
+import existContactMiddleware from "../middleware/existContact.middleware";
 import tokenAuthMiddleware from "../middleware/tokenAuth.middleware";
 import { contactSchema } from "../schemas/contact/contact.schemas";
 
@@ -16,6 +17,7 @@ contactRoutes.post(
   "",
   tokenAuthMiddleware,
   dataValidMiddleware(contactSchema),
+  existContactMiddleware,
   createContactController
 );
 contactRoutes.get("", tokenAuthMiddleware, listContactsController);
