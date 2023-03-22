@@ -1,3 +1,4 @@
+import "express-async-errors";
 import express, { Application } from "express";
 import user from "./routers/users.routes";
 import session from "./routers/session.routes";
