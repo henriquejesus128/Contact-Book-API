@@ -14,12 +14,6 @@ const sessionService = async ({
 
   const user = await userRepository.findOne({ where: { email: email } });
 
-  const { isActive } = user;
-
-  if (!isActive) {
-    throw new AppError(`Disabled user!`, 400);
-  }
-
   if (!user) {
     throw new AppError(`User or password invalid!`, 403);
   }
@@ -28,6 +22,12 @@ const sessionService = async ({
 
   if (!passwordMatch) {
     throw new AppError(`User or password invalid!`, 403);
+  }
+
+  const { isActive } = user;
+
+  if (!isActive) {
+    throw new AppError(`Disabled user!`, 400);
   }
 
   const token = jwt.sign(
