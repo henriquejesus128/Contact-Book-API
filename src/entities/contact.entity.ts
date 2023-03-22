@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   ManyToOne,
+  JoinColumn,
 } from "typeorm";
 import { User } from "./user.entity";
 
@@ -29,6 +30,7 @@ export class Contact {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => User, (user) => user.contacts)
+  @ManyToOne(() => User, (user) => user.contacts, { eager: true })
+  @JoinColumn()
   user: User;
 }
