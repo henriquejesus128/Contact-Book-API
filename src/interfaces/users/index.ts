@@ -20,3 +20,8 @@ export interface IUserUpdate {
   password?: string;
   phone?: string;
 }
+
+export interface ITokenUser {
+  id: string;
+  email: string;
+}
