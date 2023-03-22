@@ -25,14 +25,8 @@ userRoutes.patch(
   "",
   dataValidMiddleware(userUpdate),
   tokenAuthMiddleware,
-  userExistsMiddleware,
   updateUserController
 );
-userRoutes.delete(
-  "",
-  tokenAuthMiddleware,
-  userExistsMiddleware,
-  deleteUserController
-);
+userRoutes.delete("", tokenAuthMiddleware, deleteUserController);
 
 export default userRoutes;
