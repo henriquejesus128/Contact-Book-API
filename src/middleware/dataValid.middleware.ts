@@ -2,7 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import { AnySchema } from "yup";
 
 const dataValidMiddleware =
-  (schema: AnySchema) => async (req: Request, res: Response, next: NextFunction) => {
+  (schema: AnySchema) =>
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
       const validated = await schema.validate(req.body, {
         abortEarly: false,
@@ -11,7 +12,7 @@ const dataValidMiddleware =
       req.body = validated;
       return next();
     } catch (err) {
-      return res.status(400).json({ message: err });
+      return res.status(400).json({ message: err.message });
     }
   };
 export default dataValidMiddleware;
