@@ -29,6 +29,11 @@ contactRoutes.get(
   retriveContactController
 );
 contactRoutes.patch("/:id", tokenAuthMiddleware, updateContactController);
-contactRoutes.delete("/:id", tokenAuthMiddleware, deleteContactController);
+contactRoutes.delete(
+  "/:id",
+  tokenAuthMiddleware,
+  existContactMiddleware,
+  deleteContactController
+);
 
 export default contactRoutes;
