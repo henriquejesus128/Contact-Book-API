@@ -6,7 +6,7 @@ import retriveContactService from "../../services/contact/retriveContact.service
 import updateContactService from "../../services/contact/updateContact.service";
 
 export const createContactController = async (req: Request, res: Response) => {
-  const newContact = await createContactService(req.body);
+  const newContact = await createContactService(req.body, req.user);
   return res.status(201).json(newContact);
 };
 
