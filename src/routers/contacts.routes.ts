@@ -7,7 +7,8 @@ import {
   updateContactController,
 } from "../controllers/contact/contacts.controller";
 import dataValidMiddleware from "../middleware/dataValid.middleware";
-import existContactMiddleware from "../middleware/existContact.middleware";
+import existContactUserMiddleware from "../middleware/existContactUser.middleware";
+import existContactMiddleware from "../middleware/existContactUser.middleware";
 import tokenAuthMiddleware from "../middleware/tokenAuth.middleware";
 import { contactSchema } from "../schemas/contact/contact.schemas";
 
@@ -17,11 +18,16 @@ contactRoutes.post(
   "",
   tokenAuthMiddleware,
   dataValidMiddleware(contactSchema),
-  existContactMiddleware,
+  existContactUserMiddleware,
   createContactController
 );
 contactRoutes.get("", tokenAuthMiddleware, listContactsController);
-contactRoutes.get("/:id", tokenAuthMiddleware, retriveContactController);
+contactRoutes.get(
+  "/:id",
+  tokenAuthMiddleware,
+  existContactMiddleware,
+  retriveContactController
+);
 contactRoutes.patch("/:id", tokenAuthMiddleware, updateContactController);
 contactRoutes.delete("/:id", tokenAuthMiddleware, deleteContactController);
 
