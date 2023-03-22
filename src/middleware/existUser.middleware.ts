@@ -12,7 +12,7 @@ const userExistsMiddleware = async (
   const findUser = await userRepository.findOneBy({ id: req.params.id });
 
   if (!findUser) {
-    throw new AppError(`User does not exist!`, 409);
+    return res.status(409).json({ message: "User does not exist!" });
   }
 
   return next();
