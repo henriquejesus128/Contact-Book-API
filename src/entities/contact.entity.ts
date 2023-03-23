@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  ManyToOne,
+  ManyToMany,
   JoinColumn,
 } from "typeorm";
 import { User } from "./user.entity";
@@ -33,7 +33,6 @@ export class Contact {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => User, (user) => user.contacts)
-  @JoinColumn()
-  user: User;
+  @ManyToMany(() => User, (user) => user.contacts)
+  users: User[];
 }

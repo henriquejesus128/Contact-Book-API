@@ -5,7 +5,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  OneToMany,
+  ManyToMany,
+  JoinTable,
   BeforeInsert,
   BeforeUpdate,
 } from "typeorm";
@@ -47,6 +48,7 @@ export class User {
     this.password = hashSync(this.password, 10);
   }
 
-  @OneToMany(() => Contact, (contact) => contact.user)
+  @ManyToMany(() => Contact, (contact) => contact.users)
+  @JoinTable()
   contacts: Contact[];
 }
