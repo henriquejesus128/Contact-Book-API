@@ -19,7 +19,8 @@ const createContactService = async (
 
   const contact = contactRepository.create(body);
 
-  contact.user = findUser;
+  contact.users.push(findUser);
+  findUser.contacts.push(contact);
 
   await contactRepository.save(contact);
 
