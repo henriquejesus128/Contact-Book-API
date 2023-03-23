@@ -15,13 +15,13 @@ const sessionService = async ({
   const user = await userRepository.findOne({ where: { email: email } });
 
   if (!user) {
-    throw new AppError(`User or password invalid!`, 403);
+    throw new AppError(`Email or password invalid!`, 403);
   }
 
   const passwordMatch = await compare(password, user.password);
 
   if (!passwordMatch) {
-    throw new AppError(`User or password invalid!`, 403);
+    throw new AppError(`Email or password invalid!`, 403);
   }
 
   const { isActive } = user;
