@@ -32,7 +32,7 @@ python manage.py migrate
 
 ## Documentation
 
-- [Last Chapter Documentation](http://127.0.0.1:8000/api/docs/)
+- [Documentation Contact Book API](https://henriquejesus128.github.io/Documentation-Contact-Book-API/)
 
 ## Devs who were part of this project:
 
