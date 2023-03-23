@@ -6,7 +6,7 @@ export const userSchema: SchemaOf<IUserReq> = yup.object().shape({
   name: yup.string().required(),
   email: yup.string().email().required(),
   password: yup.string().min(6).required(),
-  photo: yup.string().notRequired(),
+  photo: yup.string().nullable().notRequired(),
   phone: yup.string().max(20).required(),
 });
 
@@ -22,7 +22,7 @@ export const userReturned: SchemaOf<IUser> = yup.object().shape({
   id: yup.string().required(),
   name: yup.string().required(),
   email: yup.string().email().required(),
-  photo: yup.string().required(),
+  photo: yup.string().nullable().notRequired(),
   phone: yup.string().required(),
   isActive: yup.boolean().required(),
   createdAt: yup.date().required(),
