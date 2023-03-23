@@ -4,7 +4,7 @@ import {
   IContact,
   IContactReq,
   IContactUpdate,
-  IListContact,
+  INotUserContact,
 } from "../../interfaces/contacts";
 import { userReturned } from "../user/user.schemas";
 
@@ -32,7 +32,8 @@ export const contactReturned: SchemaOf<IContact> = yup.object().shape({
   updatedAt: yup.date().required(),
   user: userReturned,
 });
-export const listReturned: SchemaOf<IListContact> = yup.object().shape({
+
+export const notUserReturned: SchemaOf<INotUserContact> = yup.object().shape({
   id: yup.string().required(),
   name: yup.string().required(),
   email: yup.string().email().required(),
@@ -42,4 +43,4 @@ export const listReturned: SchemaOf<IListContact> = yup.object().shape({
   updatedAt: yup.date().required(),
 });
 
-export const listContacts = yup.array(listReturned);
+export const listContacts = yup.array(notUserReturned);
