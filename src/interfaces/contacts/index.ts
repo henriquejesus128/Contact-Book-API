@@ -1,7 +1,9 @@
+import { IUser } from "../users";
+
 export interface IContactReq {
   name: string;
   email: string;
-  photo: string;
+  photo?: string | null | undefined;
   phone: string;
 }
 
@@ -9,15 +11,16 @@ export interface IContact {
   id: string;
   name: string;
   email: string;
-  photo: string;
+  photo?: string | null | undefined;
   phone: string;
   createdAt: Date;
   updatedAt: Date;
+  user: IUser;
 }
 
 export interface IContactUpdate {
   name?: string;
   email?: string;
-  photo: string;
+  photo?: string | null | undefined;
   phone?: string;
 }
