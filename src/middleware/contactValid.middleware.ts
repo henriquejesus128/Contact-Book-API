@@ -1,25 +1,28 @@
 import { NextFunction, Request, Response } from "express";
 import AppDataSource from "../data-source";
 import { Contact } from "../entities/contact.entity";
+import { User } from "../entities/user.entity";
 
 const contactValidMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const contactRepository = AppDataSource.getRepository(Contact);
-
   const { id } = req.user;
   const { email } = req.body;
 
-  const findContact = await contactRepository.findOne({
-    where: { email: email },
-    relations: { user: true },
-  });
+  // const findContact = await AppDataSource.getRepository(User)
+  //   .createQueryBuilder("users")
+  //   .leftJoin("user.contacts", "contact")
+  //   .where("user.id = :id", { id: id })
+  //   .andWhere("contact.email = :email", { email: email })
+  //   .getOne();
 
-  if (findContact.user.id == id) {
-    return res.status(409).json({ message: "Contact exists!" });
-  }
+  // console.log(findContact);
+
+  // if (findContact) {
+  //   return res.status(409).json({ message: "Contact exists!" });
+  // }
 
   return next();
 };
