@@ -7,7 +7,7 @@ import {
   updateUserController,
 } from "../controllers/user/users.controllers";
 import dataValidMiddleware from "../middleware/dataValid.middleware";
-import userExistsMiddleware from "../middleware/existUser.middleware";
+import userNotExistsMiddleware from "../middleware/existNotUser.middleware";
 import tokenAuthMiddleware from "../middleware/tokenAuth.middleware";
 import { userSchema, userUpdate } from "../schemas/user/user.schemas";
 
@@ -18,7 +18,7 @@ userRoutes.get("", listUsersController);
 userRoutes.get(
   "/:id",
   tokenAuthMiddleware,
-  userExistsMiddleware,
+  userNotExistsMiddleware,
   retriveUserController
 );
 userRoutes.patch(

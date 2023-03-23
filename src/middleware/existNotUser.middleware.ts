@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import AppDataSource from "../data-source";
 import { User } from "../entities/user.entity";
 
-const userExistsMiddleware = async (
+const userNotExistsMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -17,4 +17,4 @@ const userExistsMiddleware = async (
   return next();
 };
 
-export default userExistsMiddleware;
+export default userNotExistsMiddleware;
