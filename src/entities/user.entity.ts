@@ -48,6 +48,5 @@ export class User {
   }
 
   @OneToMany(() => Contact, (contact) => contact.user, { eager: true })
-  @JoinTable()
   contacts: Contact[];
 }
