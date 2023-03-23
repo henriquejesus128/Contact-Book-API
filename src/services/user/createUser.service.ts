@@ -10,9 +10,7 @@ const createUserService = async (body: IUserReq): Promise<IUser> => {
 
   await userRepository.save(user);
 
-  console.log(user, `User`);
   const validUser = await userReturned.validate(user, { stripUnknown: true });
-  console.log(validUser, `Schema`);
 
   return validUser;
 };
