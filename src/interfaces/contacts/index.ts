@@ -17,7 +17,7 @@ export interface IContact {
   updatedAt: Date;
   user: IUser;
 }
-export interface IListContact {
+export interface INotUserContact {
   id: string;
   name: string;
   email: string;
