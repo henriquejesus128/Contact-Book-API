@@ -9,14 +9,25 @@ const contactValidMiddleware = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { id } = req.user;
+  const { email: userEmail } = req.user;
   const { email } = req.body;
 
-  const userRepository = AppDataSource.getRepository(User);
+  const contactRepository = AppDataSource.getRepository(Contact);
 
-  const findUser = await userRepository.findOneBy({ id: id });
+  const findContact = await contactRepository.find({
+    relations: { user: true },
+    select: { email: true },
+  });
 
-  if (findUser.contacts[email] == email) {
+  const filterContacts = findContact.filter(
+    (contact) => contact.email === email
+  );
+
+  const findUser = filterContacts.filter(
+    (contact) => contact.user.email === userEmail
+  );
+
+  if (findUser.length > 0) {
     throw new AppError(`Contact already registered for this user!`, 400);
   }
 
