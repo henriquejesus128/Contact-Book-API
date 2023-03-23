@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import AppDataSource from "../data-source";
 import { Contact } from "../entities/contact.entity";
 import { User } from "../entities/user.entity";
+import { AppError } from "../errors/AppError";
 
 const contactValidMiddleware = async (
   req: Request,
@@ -11,27 +12,13 @@ const contactValidMiddleware = async (
   const { id } = req.user;
   const { email } = req.body;
 
-  const contactRepository = AppDataSource.getRepository(Contact);
+  const userRepository = AppDataSource.getRepository(User);
 
-  const listContact = contactRepository.find();
+  const findUser = await userRepository.findOneBy({ id: id });
 
-  console.log(listContact);
-
-  // const findContact = await AppDataSource.getRepository(Contact)
-  //   .createQueryBuilder("contacts")
-  //   .leftJoinAndSelect("contact.users", "user")
-  //   .getMany();
-
-  // const findContact = await AppDataSource.getRepository(User)
-  //   .createQueryBuilder("users")
-  //   .leftJoin("user.contacts", "contact")
-  //   .where("user.id = :id", { id: id })
-  //   .andWhere("contact.email = :email", { email: email })
-  //   .getOne();
-
-  // if (findContact) {
-  //   return res.status(409).json({ message: "Contact exists!" });
-  // }
+  if (findUser.contacts[email] == email) {
+    throw new AppError(`Contact already registered for this user!`, 400);
+  }
 
   return next();
 };
