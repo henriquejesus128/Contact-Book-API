@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/user.entity";
-import { notUserReturned } from "../../schemas/contact/contact.schemas";
+import { listContacts } from "../../schemas/contact/contact.schemas";
 
 const listContactsService = async (id: string) => {
   const userRepository = AppDataSource.getRepository(User);
@@ -10,7 +10,7 @@ const listContactsService = async (id: string) => {
     relations: { contacts: true },
   });
 
-  const validListContact = await notUserReturned.validate(user.contacts, {
+  const validListContact = await listContacts.validate(user.contacts, {
     stripUnknown: true,
   });
 
