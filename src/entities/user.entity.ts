@@ -4,11 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  DeleteDateColumn,
-  ManyToMany,
   JoinTable,
   BeforeInsert,
   BeforeUpdate,
+  OneToMany,
 } from "typeorm";
 import { hashSync } from "bcryptjs";
 import { Contact } from "./contact.entity";
@@ -48,7 +47,7 @@ export class User {
     this.password = hashSync(this.password, 10);
   }
 
-  @ManyToMany(() => Contact, (contact) => contact.users)
+  @OneToMany(() => Contact, (contact) => contact.user, { eager: true })
   @JoinTable()
   contacts: Contact[];
 }
