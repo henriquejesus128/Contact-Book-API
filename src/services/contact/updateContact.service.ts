@@ -2,7 +2,7 @@ import AppDataSource from "../../data-source";
 import { Contact } from "../../entities/contact.entity";
 import { AppError } from "../../errors/AppError";
 import { IContactUpdate } from "../../interfaces/contacts";
-import { contactReturned } from "../../schemas/contact/contact.schemas";
+import { notUserReturned } from "../../schemas/contact/contact.schemas";
 
 const updateContactService = async (
   id: string,
@@ -12,10 +12,6 @@ const updateContactService = async (
 
   const findContact = await contactRepository.findOneBy({ id: id });
 
-  if (!findContact) {
-    throw new AppError(`Contact does not exist!`, 409);
-  }
-
   const updateContact = contactRepository.create({
     ...findContact,
     ...body,
@@ -23,7 +19,7 @@ const updateContactService = async (
 
   await contactRepository.save(updateContact);
 
-  const validContact = await contactReturned.validate(updateContact, {
+  const validContact = await notUserReturned.validate(updateContact, {
     stripUnknown: true,
   });
 
