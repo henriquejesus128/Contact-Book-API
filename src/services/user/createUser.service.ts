@@ -1,6 +1,5 @@
 import { IUser, IUserReq } from "../../interfaces/users";
 import AppDataSource from "../../data-source";
-import { AppError } from "../../errors/AppError";
 import { User } from "../../entities/user.entity";
 import { userReturned } from "../../schemas/user/user.schemas";
 
