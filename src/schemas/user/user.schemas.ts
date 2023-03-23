@@ -14,7 +14,7 @@ export const userUpdate: SchemaOf<IUserUpdate> = yup.object().shape({
   name: yup.string().notRequired(),
   email: yup.string().email().notRequired(),
   password: yup.string().min(6).notRequired(),
-  photo: yup.string().notRequired(),
+  photo: yup.string().nullable().notRequired(),
   phone: yup.string().max(20).notRequired(),
 });
 
