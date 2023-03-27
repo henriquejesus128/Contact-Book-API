@@ -19,14 +19,14 @@ export const userUpdate: SchemaOf<IUserUpdate> = yup.object().shape({
 });
 
 export const userReturned: SchemaOf<IUser> = yup.object().shape({
-  id: yup.string().required(),
-  name: yup.string().required(),
-  email: yup.string().email().required(),
-  photo: yup.string().nullable().notRequired(),
-  phone: yup.string().required(),
-  isActive: yup.boolean().required(),
-  createdAt: yup.date().required(),
   updatedAt: yup.date().required(),
+  createdAt: yup.date().required(),
+  isActive: yup.boolean().required(),
+  phone: yup.string().required(),
+  photo: yup.string().nullable().notRequired(),
+  email: yup.string().email().required(),
+  name: yup.string().required(),
+  id: yup.string().required(),
 });
 
 export const listUsers = yup.array(userReturned);
