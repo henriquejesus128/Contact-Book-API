@@ -35,6 +35,6 @@ const sessionService = async ({
     process.env.SECRET_KEY!,
     { expiresIn: `24h`, subject: user.id }
   );
-  return { token, user };
+  return { token, user_id: user.id };
 };
 export default sessionService;
