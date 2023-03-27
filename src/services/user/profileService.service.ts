@@ -4,6 +4,7 @@ import { userReturned } from "../../schemas/user/user.schemas";
 
 const profileService = async (id: string) => {
   const userRepository = AppDataSource.getRepository(User);
+  console.log(id);
 
   const findUser = await userRepository.findOneBy({ id: id });
 

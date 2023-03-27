@@ -32,6 +32,7 @@ export const deleteUserController = async (req: Request, res: Response) => {
 };
 
 export const profileController = async (req: Request, res: Response) => {
+  console.log(req.user.id);
   const data = await profileService(req.user.id);
   return res.status(200).json(data);
 };
