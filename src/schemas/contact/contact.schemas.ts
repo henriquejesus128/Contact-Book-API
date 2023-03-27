@@ -23,6 +23,7 @@ export const contactUpdate: SchemaOf<IContactUpdate> = yup.object().shape({
 });
 
 export const contactReturned: SchemaOf<IContact> = yup.object().shape({
+  user: userReturned,
   updatedAt: yup.date().required(),
   createdAt: yup.date().required(),
   phone: yup.string().required(),
@@ -30,7 +31,6 @@ export const contactReturned: SchemaOf<IContact> = yup.object().shape({
   email: yup.string().email().required(),
   name: yup.string().required(),
   id: yup.string().required(),
-  user: userReturned,
 });
 
 export const notUserReturned: SchemaOf<INotUserContact> = yup.object().shape({
