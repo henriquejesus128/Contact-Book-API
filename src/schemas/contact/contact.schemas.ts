@@ -23,13 +23,13 @@ export const contactUpdate: SchemaOf<IContactUpdate> = yup.object().shape({
 });
 
 export const contactReturned: SchemaOf<IContact> = yup.object().shape({
-  id: yup.string().required(),
-  name: yup.string().required(),
-  email: yup.string().email().required(),
+  updatedAt: yup.date().required(),
+  createdAt: yup.date().required(),
   phone: yup.string().required(),
   photo: yup.string().nullable().notRequired(),
-  createdAt: yup.date().required(),
-  updatedAt: yup.date().required(),
+  email: yup.string().email().required(),
+  name: yup.string().required(),
+  id: yup.string().required(),
   user: userReturned,
 });
 
