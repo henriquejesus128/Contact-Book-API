@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import createUserService from "../../services/user/createUser.service";
 import deleteUserService from "../../services/user/deleteUser.service";
 import listUsersService from "../../services/user/listUsers.service";
+import profileService from "../../services/user/profileService.service";
 import retriveUserService from "../../services/user/retriveUser.service";
 import updateUserService from "../../services/user/updateUser.service";
 
@@ -28,4 +29,9 @@ export const updateUserController = async (req: Request, res: Response) => {
 export const deleteUserController = async (req: Request, res: Response) => {
   const data = await deleteUserService(req.user.id);
   return res.status(204).json(data);
+};
+
+export const profileController = async (req: Request, res: Response) => {
+  const data = await profileService(req.user.id);
+  return res.status(200).json(data);
 };

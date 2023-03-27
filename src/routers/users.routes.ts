@@ -3,6 +3,7 @@ import {
   createUserController,
   deleteUserController,
   listUsersController,
+  profileController,
   retriveUserController,
   updateUserController,
 } from "../controllers/user/users.controllers";
@@ -27,6 +28,7 @@ userRoutes.get(
   userNotExistsMiddleware,
   retriveUserController
 );
+userRoutes.get("/profile", tokenAuthMiddleware, profileController);
 userRoutes.patch(
   "",
   dataValidMiddleware(userUpdate),
