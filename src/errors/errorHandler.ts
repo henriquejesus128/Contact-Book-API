@@ -10,7 +10,7 @@ const errorHandler = (
   if (error instanceof AppError) {
     return res.status(error.statusCode).json({ message: error.message });
   }
-  // console.error(error.message, error.name);
+  console.error(error.message, error.name);
   return res.status(500).json({
     message: "Internal server error",
   });
