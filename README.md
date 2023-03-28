@@ -8,26 +8,20 @@ This application aims to simulate a contact book. Where the logged in user can r
 
 <h2>Installation</h2>
 
-```bash
-  pip install venv
-```
-
-Activate on
-
-- Linux: `source venv/bin/activate`
-- Windows: `.\venv\Scripts\activate`
-- Gitbash: `source venv/Scripts/activate`
-
-Install all dependencies:
+Para clonar e executar este repositório, você precisará do [Git](https://git-scm.com), do [Node.js](https://nodejs.org/pt-br/download/), do [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) e do [PostgreSQL](https://www.postgresql.org/download/) instalados em seu computador. \
+Na sua linha de comando:
 
 ```bash
-  pip install -r requirements.txt
-```
-
-Run the migrations:
-
-```bash
-python manage.py migrate
+# Clone este repositório
+git clone https://github.com/henriquejesus128/Contact-Book-API.git
+# Entre no repositório
+cd Contact-Book-API
+# Intale as dependências
+yarn
+# Intancie o banco de dados
+yarn typeorm migration:run -d .\src\data-source.ts
+# Execute a api
+yarn dev
 ```
 
 ## Documentation
