@@ -25,7 +25,7 @@ yarn dev
 ```
 
 - É necessario cria um arquvio .env com as configurações do .env.example.
-- Verifique em que PORTA seu Front End e Back End estão.
+- Verifique em que PORTA seu Front End e Back End estão pois se tiverem na mesma porta pode não funcinar.
 
 ## Documentation
 
