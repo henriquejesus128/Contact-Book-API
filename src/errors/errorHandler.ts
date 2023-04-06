@@ -12,7 +12,7 @@ const errorHandler = (
   }
   console.error(error.message, error.name);
   return res.status(500).json({
-    message: "Internal server error",
+    message: error.message,
   });
 };
 export default errorHandler;
