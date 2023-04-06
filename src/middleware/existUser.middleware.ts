@@ -7,12 +7,17 @@ const userExistsMiddleware = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { email } = req.body;
+  const { email, phone } = req.body;
   const userRepository = AppDataSource.getRepository(User);
   const findUser = await userRepository.findOneBy({ email: email });
+  const findPhone = await userRepository.findOneBy({ phone: phone });
 
   if (findUser) {
     return res.status(409).json({ message: "User exists!" });
+  }
+
+  if (findPhone) {
+    return res.status(409).json({ message: "Phone exists!" });
   }
 
   return next();
